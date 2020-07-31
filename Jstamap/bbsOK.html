@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ＢＢＳ</title>
+    <style>
+        .comment {
+            width: 900px;
+
+            margin: 0 auto;
+        }
+
+        #view {
+            width: 800px;
+            height: 400px;
+            background-color: #f9f9f9;
+            overflow: scroll;
+            margin: 60px auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comment">
+        <p>名前：<input type="text" value="" id="name" style="width:250px;font-size:110%;"></p>
+        <p>コメント：<input type="text" value="" id="word" style="width:400px;font-size:110%;"></p>
+        <div hidden id="view_time"></div>
+        <input type="button" value="投稿" style="font-size:110%;" onClick='getJob01();'>
+    </div>
+    <p id="view"></p>
+
+
+
+
+    <script type="text/javascript">
+        function getJob01() {
+            function getNow() {
+                var now = new Date();
+                var year = now.getFullYear();
+                var mon = now.getMonth() + 1; //１を足すこと
+                var day = now.getDate();
+                var hour = now.getHours();
+                var min = now.getMinutes();
+                // var sec = now.getSeconds();
+
+                //出力用
+                var s = year + "年" + mon + "月" + day + "日" + hour + "時" + min + "分";
+                return s;
+            }
+
+            nnn = document.getElementById("name").value;
+            www = document.getElementById("word").value;
+            ttt = document.getElementById("view_time").innerHTML = getNow();
+            vvv = document.getElementById("view").innerHTML;
+            aaa = vvv + nnn + '<br>' + www + '<br>' +
+                ttt + '<br>' + '<hr>';
+            // aaa = vvv + nnn + '<br>' + www + '<div id="view_time">';
+            document.getElementById("view").innerHTML = aaa;
+
+            document.getElementById("name").value = "";
+            document.getElementById("name").focus();
+            document.getElementById("word").value = "";
+            document.getElementById("word").focus();
+
+
+            // document.getElementById("view_time").innerHTML = getNow();
+
+        }
+    </script>
+
+</body>
+
+</html>
